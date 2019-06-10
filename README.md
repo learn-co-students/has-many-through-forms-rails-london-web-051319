@@ -95,7 +95,7 @@ class PostsController < ApplicationController
   ...
 
   private
-  
+
   def post_params
     params.require(:post).permit(:title, :content, category_ids:[])
   end
@@ -133,6 +133,7 @@ We can now associate categories with our posts, but what about creating new cate
 
 First, we want a text field to enter the name of our new category. The value of the name should be nested under our `post_params`, so we don't have to add too much code to our controller. We can use the `fields_for` helper to do this very easily.
 
+
 ```erb
 # app/views/posts/_form.html.erb
 
@@ -167,7 +168,7 @@ class PostsController < ApplicationController
   ...
 
   private
-  
+
   def post_params
     params.require(:post).permit(:title, :content, category_ids:[], categories_attributes: [:name])
   end
